@@ -514,6 +514,7 @@ export function Timeline() {
       <div
         className="flex-1 flex flex-col overflow-hidden relative"
         ref={timelineRef}
+        onClick={handleTimelineContentClick}
       >
         <TimelinePlayhead
           currentTime={currentTime}
