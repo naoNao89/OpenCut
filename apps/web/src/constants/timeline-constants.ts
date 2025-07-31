@@ -44,17 +44,6 @@ export function getTrackHeight(type: TrackType): number {
   return TRACK_HEIGHTS[type];
 }
 
-// Calculate cumulative height up to (but not including) a track index
-export function getCumulativeHeightBefore(
-  tracks: Array<{ type: TrackType }>,
-  trackIndex: number
-): number {
-  const GAP = 4; // 4px gap between tracks (equivalent to Tailwind's gap-1)
-  return tracks
-    .slice(0, trackIndex)
-    .reduce((sum, track) => sum + getTrackHeight(track.type) + GAP, 0);
-}
-
 // Calculate total height of all tracks
 export function getTotalTracksHeight(
   tracks: Array<{ type: TrackType }>

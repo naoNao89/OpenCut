@@ -52,7 +52,6 @@ import { SnapPoint } from "@/hooks/use-timeline-snapping";
 import type { DragData, TimelineTrack } from "@/types/timeline";
 import {
   getTrackHeight,
-  getCumulativeHeightBefore,
   getTotalTracksHeight,
   TIMELINE_CONSTANTS,
   snapTimeToFrame,
@@ -708,7 +707,7 @@ export function Timeline() {
               showHorizontalScrollbar
             >
               <div
-                className="relative flex-1"
+                className="relative flex-1 flex flex-col gap-1"
                 style={{
                   height: `${Math.max(200, Math.min(800, getTotalTracksHeight(tracks)))}px`,
                   width: `${dynamicTimelineWidth}px`,
@@ -722,9 +721,8 @@ export function Timeline() {
                       <ContextMenu key={track.id}>
                         <ContextMenuTrigger asChild>
                           <div
-                            className="absolute left-0 right-0 border-b border-muted/30 py-[0.05rem]"
+                            className="border-b border-muted/30 py-[0.05rem]"
                             style={{
-                              top: `${getCumulativeHeightBefore(tracks, index)}px`,
                               height: `${getTrackHeight(track.type)}px`,
                             }}
                             onClick={(e) => {
